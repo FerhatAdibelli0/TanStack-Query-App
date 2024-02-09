@@ -7,11 +7,12 @@ import EventItem from './EventItem';
 
 export default function FindEventSection() {
   const searchElement = useRef();
-  const [searchTerm, setSearchTerm] = useState('');
-
-  const { data, isError, isPending, error } = useQuery({
+  const [searchTerm, setSearchTerm] = useState();
+  //isLoading and isPending are different cause isPending is true also while query is disabled
+  const { data, isError, isLoading, error } = useQuery({
     queryKey: ['events', { search: searchTerm }],
     queryFn: ({ signal }) => fetchEvents({ signal, searchTerm }),
+    enabled: searchTerm !== undefined,
   });
 
   function handleSubmit(event) {
@@ -25,7 +26,7 @@ export default function FindEventSection() {
     content = <ErrorBlock message={error.info?.message} />;
   }
 
-  if (isPending) {
+  if (isLoading) {
     content = <LoadingIndicator />;
   }
 
