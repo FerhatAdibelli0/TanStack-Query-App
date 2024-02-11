@@ -1,6 +1,6 @@
 export default function ImagePicker({ images, selectedImage, onSelect }) {
   return (
-    <div id="image-picker">
+    <div id='image-picker'>
       <p>Select an image</p>
       <ul>
         {images.map((image) => (
@@ -10,7 +10,7 @@ export default function ImagePicker({ images, selectedImage, onSelect }) {
             className={selectedImage === image.path ? 'selected' : undefined}
           >
             <img
-              src={`http://localhost:3000/${image.path}`}
+              src={`https://tanstack-backend.onrender.com/${image.path}`}
               alt={image.caption}
             />
           </li>

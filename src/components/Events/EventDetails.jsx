@@ -90,7 +90,7 @@ export default function EventDetails() {
           {!isPending && (
             <>
               <img
-                src={`http://localhost:3000/${data.image}`}
+                src={`https://tanstack-backend.onrender.com/${data.image}`}
                 alt={data.image}
               />
               <div id='event-details-info'>
