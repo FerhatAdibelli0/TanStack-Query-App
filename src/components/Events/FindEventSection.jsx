@@ -10,8 +10,8 @@ export default function FindEventSection() {
   const [searchTerm, setSearchTerm] = useState();
   //isLoading and isPending are different cause isPending is true also while query is disabled
   const { data, isError, isLoading, error } = useQuery({
-    queryKey: ['events', { search: searchTerm }],
-    queryFn: ({ signal }) => fetchEvents({ signal, searchTerm }),
+    queryKey: ['events', { searchTerm }],
+    queryFn: ({ signal, queryKey }) => fetchEvents({ signal, ...queryKey[1] }),
     enabled: searchTerm !== undefined,
   });
 
